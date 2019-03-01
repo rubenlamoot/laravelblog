@@ -11,16 +11,26 @@
 |
 */
 
+/** frontend routes */
 Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 
-/** dit zijn mijn backend routes */
+/** dit zijn mijn backend routes + bescherming via middleware */
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', 'HomeController@index');
+    Route::resource('/admin/users', 'AdminUsersController');
+    Route::resource('admin/posts', 'AdminPostsController');
+    Route::resource('admin/categories', 'AdminCategoriesController');
+});
 
-Route::get('/admin', 'HomeController@index');
 
-Route::resource('/admin/users', 'AdminUsersController');
+
+
+
+
 

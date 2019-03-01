@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsersEditRequest;
 use App\Http\Requests\UsersRequest;
 use App\Photo;
+use App\Post;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,9 +24,10 @@ class AdminUsersController extends Controller
         // code hier gaat naar admin/users/index.blade.php
 
         $users = User::all();
+        $totalUsers = User::all()->count();
+        $totalPosts = Post::all()->count();
 
-
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', compact('users', 'totalUsers', 'totalPosts'));
 
     }
 
@@ -143,7 +145,10 @@ class AdminUsersController extends Controller
 
         $user = User::findOrFail($id);
         $user->delete();
+        $photo = Photo::findOrFail($user->photo_id);
         unlink(public_path() . $user->photo->file);
+        $photo->delete();
+
 
         Session::flash('deleted_user', 'The user is deleted');
         return redirect('/admin/users');
