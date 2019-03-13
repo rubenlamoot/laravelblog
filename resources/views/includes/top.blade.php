@@ -8,7 +8,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">
-                            {{$totalUsers}}
+                            {{--{{$totalUsers}}--}}
                         </div>
                         <div>Total Users</div>
                     </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">
-                            {{$totalPosts}}
+                            {{--{{$totalPosts}}--}}
                         </div>
                         <div>Total Posts</div>
                     </div>

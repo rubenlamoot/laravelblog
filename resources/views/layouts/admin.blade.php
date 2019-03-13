@@ -22,7 +22,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="{{asset('css/morris.css')}}" rel="stylesheet">
-
+@yield('styles')
     <!-- Custom Fonts -->
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -315,6 +315,19 @@
                         <!-- /.nav-second-level -->
                     </li>
 
+                    <li>
+                        <a href="#"><i class="fa fa-camera fa-fw"></i> Media<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('medias.index')}}">All Media</a>
+                            </li>
+                            <li>
+                                <a href="{{route('medias.create')}}">Upload Media</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
 
                 </ul>
             </div>
@@ -345,6 +358,7 @@
 
 <!-- jQuery -->
 <script src="{{asset('js/jquery.min.js')}}"></script>
+@yield('scripts')
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -359,6 +373,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{asset('js/sb-admin-2.js')}}"></script>
+
 
 </body>
 

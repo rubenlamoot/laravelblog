@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use carbon;
-use App\Category;
-use App\Post;
-use App\User;
+use App\Photo;
 use Illuminate\Http\Request;
 
-class AdminCategoriesController extends Controller
+class AdminMediasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +15,6 @@ class AdminCategoriesController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-//        $totalUsers = User::all()->count();
-//        $totalPosts = Post::all()->count();
-        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -32,6 +25,7 @@ class AdminCategoriesController extends Controller
     public function create()
     {
         //
+        return view('admin.medias.create');
     }
 
     /**
@@ -43,8 +37,10 @@ class AdminCategoriesController extends Controller
     public function store(Request $request)
     {
         //
-        Category::create($request->all());
-        return redirect('/admin/categories');
+        $file = $request->file('file');
+        $name = time() .$file->getClientOriginalName();
+        $file->move('images', $name);
+        Photo::create(['file' => $name]);
     }
 
     /**
@@ -67,8 +63,6 @@ class AdminCategoriesController extends Controller
     public function edit($id)
     {
         //
-        $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -81,9 +75,6 @@ class AdminCategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $category = Category::findOrFail($id);
-        $category->update($request->all());
-        return redirect('/admin/categories');
     }
 
     /**
@@ -95,8 +86,5 @@ class AdminCategoriesController extends Controller
     public function destroy($id)
     {
         //
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect('/admin/categories');
     }
 }

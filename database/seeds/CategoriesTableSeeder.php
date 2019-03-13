@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 class CategoriesTableSeeder extends Seeder
 {
     /**
@@ -12,10 +10,6 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('categories')->insert(['name' => 'sport']);
-        DB::table('categories')->insert(['name' => 'nature']);
-        DB::table('categories')->insert(['name' => 'cars']);
-        DB::table('categories')->insert(['name' => 'women']);
-        DB::table('categories')->insert(['name' => 'politics']);
+        factory('App\Category',5)->create();
     }
 }

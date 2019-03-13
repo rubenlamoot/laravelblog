@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         foreach ($this->toTruncate as $table){
             DB::table($table)->truncate();
         }
@@ -22,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(PostsTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }
