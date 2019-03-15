@@ -15,6 +15,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/post/($id)', ['as' => 'home.post', 'uses' => 'AdminPostsController@post']);
 
 
 Auth::routes();
@@ -27,6 +28,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/medias', 'AdminMediasController');
+    Route::resource('admin/comments', 'PostCommentController');
+
 });
 
 
