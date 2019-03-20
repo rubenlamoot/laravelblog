@@ -16,6 +16,7 @@
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{asset('css/cssfront/core-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/cssfront/bootstrap.min.css')}}">
 
 
     <!-- Responsive CSS -->
@@ -360,7 +361,7 @@
 <!-- Popper js -->
 <script src="{{asset('js/jsfront/popper.min.js')}}"></script>
 <!-- Bootstrap js -->
-<script src="{{asset('js/jsfront/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- Plugins js -->
 <script src="{{asset('js/jsfront/plugins.js')}}"></script>
 <!-- Active js -->

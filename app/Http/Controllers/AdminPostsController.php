@@ -75,6 +75,7 @@ class AdminPostsController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -83,10 +84,10 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
-        $post = Post::findOrFail($id);
+        $post = Post::findBySlug($slug);
         $categories = Category::pluck('name', 'id')->all();
         return view('admin.posts.edit', compact('post', 'categories'));
     }
@@ -146,6 +147,7 @@ class AdminPostsController extends Controller
 
     public function post($id){
         $post = Post::findOrFail($id);
-        return view('post', compact('post'));
+        $comments = $post->comments()->whereIsActive(1)->get();
+        return view('post', compact('post', 'comments'));
     }
 }
